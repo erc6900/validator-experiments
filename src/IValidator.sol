@@ -37,12 +37,13 @@ abstract contract IValidator {
      *
      * Unlike ERC-4337's `validateUserOp` function on `IAccount`, this takes a
      * `signature` parameter separate from the user op. Validators that are
-     * checking a signature against `userOpHash` should examine this signature * rather than the one in the `UserOperation` struct. This enables validator
+     * checking a signature against `userOpHash` should examine this signature
+     * rather than the one in the `UserOperation` struct. This enables validator
      * composition, where a parent validator may choose to pass a portion of a
      * more complex signature to a child validator.
      *
-     * @dev Must only access associated storage of `account` as defined in
-     *      ERC-4337.
+     * @dev Must not access storage except for the associated storage of
+     *      `account`, as defined in ERC-4337.
      *      Must follow all other ERC-4337 validation restrictions, such as
      *      avoiding banned opcodes.
      *
